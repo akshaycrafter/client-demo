@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- All page content is rendered from the single DATA object in js/main.js -->
+  <title>AC Service | Demo</title>
+  <meta name="description" content="AC Service — AC repair, servicing, installation and gas filling. Demo sample website.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="data:image/sv g+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='8'%20fill='%232B2D30'/%3E%3Ctext%20x='16'%20y='21'%20font-family='Arial,sans-serif'%20font-size='14'%20font-weight='700'%20fill='white'%20text-anchor='middle'%3EAC%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts, preconnected, swap so text is never blocked -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@300;400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Content stays fully visible if JS fails: JS only adds classes that hide things. -->
+  <noscript>
+    <style>
+      .overlay, .mbar, .scroll-indicator, .scroll-hint { display: none !important; }
+    </style>
+  </noscript>
+
+  <script>document.documentElement.className += ' js';</script>
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <!-- Small demo tag, fixed in a corner, never blocking content -->
+  <div class="demo-pill" aria-label="Demo website preview">Demo</div>
+
+  <!-- 1. Navbar -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top" aria-label="AC Service — back to top">
+        <span class="mono" id="navMono" aria-hidden="true">AC</span>
+        <span class="name" id="navName">AC Service</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Site">
+        <a href="#services">Services</a>
+        <a href="#how">How it works</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="phone-pill" id="phonePill" href="tel:+910000000000" aria-label="Call AC Service at +91 00000 00000">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.8 3.5h3.1l1.4 3.8-2 1.4c.8 2.1 2.5 3.8 4.6 4.6l1.4-2 3.8 1.4v3.1c0 1.2-.9 2.1-2.1 2.1C10.1 18.4 5.6 13.9 5 6.6c0-1.2.9-2.1 2.1-2.1z"/></svg>
+          <span>+91 00000 00000</span>
+        </a>
+        <button class="btn btn-secondary" type="button" data-magnetic id="callNowBtn">
+          <span class="btn-text">Call now</span>
+          <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+        </button>
+        <button class="nav-burger" type="button" id="navToggle" aria-expanded="false" aria-controls="mobileOverlay" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile: full-screen menu overlay, sits above the bottom action bar -->
+  <div class="overlay" id="mobileOverlay" aria-hidden="true">
+    <nav class="ov-nav" aria-label="Menu">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#location">Location</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="ov-meta">
+      <p class="ov-hours" id="ovHours">Open daily, 9 am to 8 pm</p>
+      <p class="ov-place" id="ovPlace">Shop No. 00, Main Road, Your City</p>
+    </div>
+    <div class="ov-actions">
+      <button class="btn btn-primary" type="button" data-magnetic id="ovCallBtn">
+        <span class="btn-text">Call now</span>
+        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+      </button>
+      <a class="btn btn-secondary" data-wa href="https://wa.me/910000000000" target="_blank" rel="noopener" data-magnetic>
+        <svg class="icon icon-22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2.2c-5.4 0-9.76 4.35-9.76 9.76 0 1.72.45 3.4 1.3 4.87L2.4 21.6l4.93-1.29c1.42.79 3.04 1.21 4.7 1.22 5.41 0 9.77-4.36 9.77-9.77 0-2.61-1.01-5.06-2.85-6.9A9.7 9.7 0 0 0 12.04 2.2zm0 17.85c-1.49 0-2.96-.4-4.24-1.15l-.3-.18-2.92.77.78-2.85-.2-.3a8.13 8.13 0 0 1-1.25-4.33c0-4.5 3.66-8.16 8.17-8.16 2.18 0 4.24.85 5.79 2.4a8.1 8.1 0 0 1 2.4 5.78c0 4.5-3.66 8.16-8.13 8.16zm4.49-6.12c-.25-.12-1.46-.72-1.69-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.78.97-.15.16-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.22-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.76-1.85-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.39 1 2.55.13.17 1.76 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+        <span class="btn-text">WhatsApp</span>
+        <span class="v-hide" data-wa-label>https://wa.me/910000000000</span>
+      </a>
+    </div>
+    <button class="ov-close" type="button" id="ovCloseBtn" aria-label="Close menu">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile: fixed bottom action bar -->
+  <div class="mbar">
+    <button class="mbar-btn mbar-call" type="button" data-magnetic id="mbarCallBtn">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.8 3.5h3.1l1.4 3.8-2 1.4c.8 2.1 2.5 3.8 4.6 4.6l1.4-2 3.8 1.4v3.1c0 1.2-.9 2.1-2.1 2.1C10.1 18.4 5.6 13.9 5 6.6c0-1.2.9-2.1 2.1-2.1z"/></svg>
+      <span>Call</span>
+    </button>
+    <a class="mbar-btn mbar-wa" data-wa href="https://wa.me/910000000000" target="_blank" rel="noopener" data-magnetic>
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2.2c-5.4 0-9.76 4.35-9.76 9.76 0 1.72.45 3.4 1.3 4.87L2.4 21.6l4.93-1.29c1.42.79 3.04 1.21 4.7 1.22 5.41 0 9.77-4.36 9.77-9.77 0-2.61-1.01-5.06-2.85-6.9A9.7 9.7 0 0 0 12.04 2.2zm0 17.85c-1.49 0-2.96-.4-4.24-1.15l-.3-.18-2.92.77.78-2.85-.2-.3a8.13 8.13 0 0 1-1.25-4.33c0-4.5 3.66-8.16 8.17-8.16 2.18 0 4.24.85 5.79 2.4a8.1 8.1 0 0 1 2.4 5.78c0 4.5-3.66 8.16-8.13 8.16zm4.49-6.12c-.25-.12-1.46-.72-1.69-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.78.97-.15.16-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.22-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.76-1.85-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.39 1 2.55.13.17 1.76 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+      <span>WhatsApp</span>
+      <span class="v-hide" data-wa-label>https://wa.me/910000000000</span>
+    </a>
+  </div>
+
+  <!-- 2. Hero -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img id="heroImg" src="assets/images/hero.jpg" alt="" width="1920" height="1080">
+      <div class="hero-veil"></div>
+    </div>
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-tag reveal"><span id="heroTag">AC repair · Your City</span></p>
+      <h1 class="hero-title mask" id="heroTitle">
+        <span class="line"><span class="line-in">Cool air,</span></span>
+        <span class="line"><span class="line-in"><em>fixed properly.</em></span></span>
+      </h1>
+      <p class="hero-sub reveal" id="heroSub">We come to your place, check the AC, and fix what needs fixing.</p>
+      <div class="hero-actions reveal">
+        <button class="btn btn-primary" type="button" data-magnetic id="heroCallBtn">
+          <span class="btn-text">Call now</span>
+          <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+        </button>
+        <a class="btn btn-secondary" data-wa href="https://wa.me/910000000000" target="_blank" rel="noopener" data-magnetic>
+          <svg class="icon icon-22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2.2c-5.4 0-9.76 4.35-9.76 9.76 0 1.72.45 3.4 1.3 4.87L2.4 21.6l4.93-1.29c1.42.79 3.04 1.21 4.7 1.22 5.41 0 9.77-4.36 9.77-9.77 0-2.61-1.01-5.06-2.85-6.9A9.7 9.7 0 0 0 12.04 2.2zm0 17.85c-1.49 0-2.96-.4-4.24-1.15l-.3-.18-2.92.77.78-2.85-.2-.3a8.13 8.13 0 0 1-1.25-4.33c0-4.5 3.66-8.16 8.17-8.16 2.18 0 4.24.85 5.79 2.4a8.1 8.1 0 0 1 2.4 5.78c0 4.5-3.66 8.16-8.13 8.16zm4.49-6.12c-.25-.12-1.46-.72-1.69-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.78.97-.15.16-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.22-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.76-1.85-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.39 1 2.55.13.17 1.76 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+          <span class="btn-text">WhatsApp</span>
+          <span class="v-hide" data-wa-label>https://wa.me/910000000000</span>
+        </a>
+        <p class="scroll-hint">Scroll</p>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- 3. Slow marquee strip -->
+  <div class="marquee">
+    <div class="marquee-track" id="marqueeTrack">
+      <noscript>
+        <div class="marquee-chunk">
+          <span>AC repair</span><span class="mark" aria-hidden="true">/</span>
+          <span>AC servicing and cleaning</span><span class="mark" aria-hidden="true">/</span>
+          <span>AC installation</span><span class="mark" aria-hidden="true">/</span>
+          <span>AC gas filling</span><span class="mark" aria-hidden="true">/</span>
+          <span>AC repair · Your City</span>
+        </div>
+      </noscript>
+    </div>
+  </div>
+
+  <!-- 4. Services (light grey) -->
+  <section class="section section-services" id="services">
+    <div class="wrap">
+      <p class="s-label reveal">What we do</p>
+      <h2 class="s-title mask" style="--rd:0.08s">Services</h2>
+      <p class="s-intro reveal" style="--rd:0.16s">Four regular jobs for split and window units.</p>
+      <div class="rows" id="servicesList">
+        <!-- Rendered from DATA.services -->
+      </div>
+    </div>
+  </section>
+  <noscript>
+    <div class="wrap" style="padding:3.5rem 0;color:#5E6266;font-size:18px;line-height:1.7">
+      <p style="color:#17181A;margin-bottom:1rem">
+        <strong>AC repair</strong> — Finding the fault and restoring cooling on split and window AC units.
+      </p>
+      <p>
+        <strong>AC servicing and cleaning</strong> — Cleaning and routine servicing to keep the unit running properly.
+      </p>
+      <p>
+        <strong>AC installation</strong> — Mounting and setting up new AC units.
+      </p>
+      <p>
+        <strong>AC gas filling</strong> — Checking for leaks and refilling the coolant gas the unit needs.
+      </p>
+    </div>
+  </noscript>
+
+  <!-- 5. How it works (white) -->
+  <section class="section section-how" id="how">
+    <div class="wrap">
+      <p class="s-label reveal">How it works</p>
+      <h2 class="s-title mask" style="--rd:0.08s">Three steps</h2>
+      <p class="s-intro reveal" style="--rd:0.16s">From a message to a unit that cools again.</p>
+      <div class="steps" id="stepsWrap">
+        <div class="steps-line" aria-hidden="true"><span class="steps-line-fill"></span></div>
+        <span class="step-num reveal" aria-hidden="true">01</span>
+        <h3 class="step-title reveal" style="--rd:0.06s">Call or WhatsApp us</h3>
+        <span class="step-num reveal" aria-hidden="true">02</span>
+        <h3 class="step-title reveal" style="--rd:0.06s">Technician visits and checks the AC</h3>
+        <span class="step-num reveal" aria-hidden="true">03</span>
+        <h3 class="step-title reveal" style="--rd:0.06s">Fixed properly and tested</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Why choose us (white) -->
+  <section class="section section-why" id="why">
+    <div class="wrap">
+      <p class="s-label reveal">Why choose us</p>
+      <h2 class="s-title mask" style="--rd:0.08s">What to expect</h2>
+      <div class="points">
+        <div class="point reveal">
+          <span class="point-num" aria-hidden="true">01</span>
+          <h3 class="point-title">Doorstep service</h3>
+        </div>
+        <div class="point reveal" style="--rd:0.12s">
+          <span class="point-num" aria-hidden="true">02</span>
+          <h3 class="point-title">Clear communication</h3>
+        </div>
+        <div class="point reveal" style="--rd:0.24s">
+          <span class="point-num" aria-hidden="true">03</span>
+          <h3 class="point-title">Neat work</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Location and hours (light grey) -->
+  <section class="section section-location" id="location">
+    <div class="wrap">
+      <p class="s-label reveal">Location and hours</p>
+      <h2 class="s-title mask" style="--rd:0.08s">Where to find us</h2>
+      <p class="s-intro reveal" style="--rd:0.16s" id="locIntro">Shop No. 00, Main Road, Your City · Open daily, 9 am to 8 pm.</p>
+
+      <div class="loc-grid">
+        <div class="loc-info reveal">
+          <div class="loc-block">
+            <p class="loc-k">Address</p>
+            <p class="loc-v" id="locAddress">Shop No. 00, Main Road, Your City</p>
+          </div>
+          <div class="loc-block">
+            <p class="loc-k">Hours</p>
+            <p class="loc-v" id="locHours">Open daily, 9 am to 8 pm</p>
+          </div>
+          <div class="loc-block">
+            <p class="loc-k">Phone</p>
+            <p class="loc-v"><a class="loc-link" id="locPhone" href="tel:+910000000000">+91 00000 00000</a></p>
+          </div>
+          <a class="btn btn-secondary" id="directionsBtn" href="https://www.google.com/maps/search/?api=1&amp;query=Your%20City" target="_blank" rel="noopener" data-magnetic>
+            <span class="btn-text">Get directions</span>
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+          </a>
+        </div>
+
+        <div class="map-wrap reveal">
+          <div class="map-frame" data-mapwrap>
+            <iframe id="mapFrame" src="https://www.google.com/maps?q=Your%20City&amp;output=embed" title="Map showing Your City" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Contact + final CTA (white) -->
+  <section class="section section-contact" id="contact">
+    <div class="wrap">
+      <p class="s-label reveal">Contact</p>
+      <h2 class="s-title mask" style="--rd:0.08s">Get in touch</h2>
+      <p class="s-intro reveal" style="--rd:0.16s">A call or a message is enough to book a visit.</p>
+
+      <div class="info-grid">
+        <div class="info-card reveal">
+          <p class="info-k">Phone</p>
+          <a class="info-v" id="infoPhone" href="tel:+910000000000">+91 00000 00000</a>
+        </div>
+        <div class="info-card reveal" style="--rd:0.08s">
+          <p class="info-k">WhatsApp</p>
+          <a class="info-v" data-wa href="https://wa.me/910000000000" target="_blank" rel="noopener">Send a message</a>
+        </div>
+        <div class="info-card reveal" style="--rd:0.16s">
+          <p class="info-k">Address</p>
+          <p class="info-v" id="infoAddress">Shop No. 00, Main Road, Your City</p>
+        </div>
+        <div class="info-card reveal" style="--rd:0.24s">
+          <p class="info-k">Hours</p>
+          <p class="info-v" id="infoHours">Open daily, 9 am to 8 pm</p>
+        </div>
+      </div>
+
+      <div class="cta reveal">
+        <h2 class="cta-title" id="ctaTitle">AC not cooling?</h2>
+        <p class="cta-sub" id="ctaSub">Send a message and we get back to you.</p>
+        <div class="cta-actions">
+          <button class="btn btn-primary" type="button" data-magnetic id="ctaCallBtn">
+            <span class="btn-text">Call</span>
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+          </button>
+          <a class="btn btn-secondary" data-wa href="https://wa.me/910000000000" target="_blank" rel="noopener" data-magnetic>
+            <svg class="icon icon-22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2.2c-5.4 0-9.76 4.35-9.76 9.76 0 1.72.45 3.4 1.3 4.87L2.4 21.6l4.93-1.29c1.42.79 3.04 1.21 4.7 1.22 5.41 0 9.77-4.36 9.77-9.77 0-2.61-1.01-5.06-2.85-6.9A9.7 9.7 0 0 0 12.04 2.2zm0 17.85c-1.49 0-2.96-.4-4.24-1.15l-.3-.18-2.92.77.78-2.85-.2-.3a8.13 8.13 0 0 1-1.25-4.33c0-4.5 3.66-8.16 8.17-8.16 2.18 0 4.24.85 5.79 2.4a8.1 8.1 0 0 1 2.4 5.78c0 4.5-3.66 8.16-8.13 8.16zm4.49-6.12c-.25-.12-1.46-.72-1.69-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.78.97-.15.16-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.22-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.76-1.85-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.39 1 2.55.13.17 1.76 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+            <span class="btn-text">WhatsApp</span>
+            <span class="v-hide" data-wa-label>https://wa.me/910000000000</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Footer (white, thin top hairline) -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="footer-name" id="footerName">AC Service</p>
+          <p class="footer-tag" id="footerTag">AC repair · Your City</p>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <p class="footer-k">Call</p>
+            <a class="footer-v" id="footPhone" href="tel:+910000000000">+91 00000 00000</a>
+          </div>
+          <div class="footer-col">
+            <p class="footer-k">WhatsApp</p>
+            <a class="footer-v" data-wa href="https://wa.me/910000000000" target="_blank" rel="noopener">Message us</a>
+          </div>
+          <div class="footer-col">
+            <p class="footer-k">Address</p>
+            <p class="footer-v" id="footAddress">Shop No. 00, Main Road, Your City</p>
+          </div>
+          <div class="footer-col">
+            <p class="footer-k">Hours</p>
+            <p class="footer-v" id="footHours">Open daily, 9 am to 8 pm</p>
+          </div>
+        </div>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="#services">Services</a>
+          <a href="#how">How it works</a>
+          <a href="#location">Location</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <p class="footer-base" id="footerBase">Demo sample website. AC Service.</p>
+    </div>
+  </footer>
+
+  <!-- Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+
+  <!-- Site content and motion. The single DATA object in this file drives every value above. -->
+  <script src="js/main.js"></script>
+</body>
+</html>
